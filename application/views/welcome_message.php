@@ -14,7 +14,7 @@
 
 <div id="container" class="easyui-layout" fit="true">
 	<div region="center">
-		<table id="dgCustomers" toolbar="#toolbarCustomer" class="easyui-datagrid" fit="true" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="/welcome/getcustomers" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false">
+		<table id="dgCustomers" toolbar="#toolbarCustomer" class="easyui-datagrid" fit="true" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?php echo base_url('welcome/getcustomers'); ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false">
 			<thead>
 				<tr>
 					<th field="customerNumber" width="80">Customer Number</th>
@@ -118,6 +118,9 @@
 	    " style="width:90px">Cancel</a>
 	</div>
 </div>
+<script>
+	sessionStorage.setItem('urlx','<?php echo base_url();?>');
+</script>
 
 </body>
 </html>

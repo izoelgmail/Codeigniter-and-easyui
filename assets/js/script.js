@@ -1,4 +1,6 @@
 var ttl;
+var urlx=sessionStorage.getItem('urlx');
+
 function doSearchCustomer(){
 	$('#dgCustomers').datagrid('load',{
 		search_customer: $('#searchCustomer').val()
@@ -8,7 +10,7 @@ function doSearchCustomer(){
 function newCustomer() {
 	$('#dlgCustomer').dialog('open').dialog('setTitle','Add Vendor Contacts');
 	$('#fmCustomer').form('clear');
-	url = '/Welcome/saveCustomer';
+	url = urlx+'/Welcome/saveCustomer';
 	ttl = "new";
 }
 
@@ -17,7 +19,7 @@ function editCustomer() {
 	if (row){
 		$('#dlgCustomer').dialog('open').dialog('setTitle','Edit');
 		$('#fmCustomer').form('load',row);
-		url = 'Welcome/updateCustomer/'+row.customerNumber;
+		url = urlx+'/Welcome/updateCustomer/'+row.customerNumber;
 		ttl = "updt";
 	}else {
 		$.messager.alert('Warning','Contact not selected!');
@@ -65,7 +67,7 @@ function destroyCustomer() {
 	if (row){
 		$.messager.confirm('Confirm','Are you sure you want to delete this Vendor..? All data under this Vendor will be disappear',function(r){
 			if (r){
-				$.post('/Welcome/destroyCustomer',{id:row.customerNumber},function(result){
+				$.post(urlx+'/Welcome/destroyCustomer',{id:row.customerNumber},function(result){
 					if (result.success){
 						$('#dgCustomers').datagrid('reload');	// reload the Vendor data
 					} else {
